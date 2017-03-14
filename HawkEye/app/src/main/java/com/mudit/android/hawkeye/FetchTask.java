@@ -1,17 +1,11 @@
 package com.mudit.android.hawkeye;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassifier;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +15,8 @@ import static android.content.ContentValues.TAG;
 public class FetchTask extends AsyncTask <Void,Void,Void> {
 
     private AsyncResponse asyncResponse;
-    File file;
-    List<Result> search_result = new ArrayList<>();
+    private File file;
+    private List<Result> search_result = new ArrayList<>();
 
     public FetchTask(File file, AsyncResponse asyncResponse) {
         this.file = file;
@@ -34,18 +28,14 @@ public class FetchTask extends AsyncTask <Void,Void,Void> {
 
 
         VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
-        service.setApiKey("api_key_here");
-        Uri uri = Uri.parse("android.resource://your.package.here/drawable/image_name");
-        // File file1 = new File(Environment.getExternalStoragePublicDirectory("/Canvas Vision"), "1993141.jpg" );
+        service.setApiKey(BuildConfig.VR_API_KEY);
 
-        System.out.println("Classify an image");
         ClassifyImagesOptions options = new ClassifyImagesOptions.Builder()
                 .images(file)
                 .build();
         VisualClassification result = service.classify(options).execute();
 
         System.out.println(result);
-
 
         if (result.getImages() != null) {
             List<VisualClassifier> resultClasses = result.getImages().get(0).getClassifiers();
@@ -62,15 +52,8 @@ public class FetchTask extends AsyncTask <Void,Void,Void> {
                     }
                     if(search_result!=null){
                         asyncResponse.processFinish(search_result);
-                    }
-
-
-
-
-                }
-            }
+                    }}}
         }
-
         return null;
     }
 }

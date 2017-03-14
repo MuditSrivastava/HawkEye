@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">HawkEye</string>
     <string name="photo">take photo</string>
+    <string name="Search">Searching Results for Image</string>
+    <string name="click_menu">click photo</string>
+    <string name="browse_menu">browse photo</string>
 </resources>

@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each{
+        it.buildConfigField 'String', 'VR_API_KEY',"VR_Key_Here"
+        it.buildConfigField 'String', 'TTS_Username',"TTS_Username_Here"
+        it.buildConfigField 'String', 'TTS_Password',"TTS_Key_Here"
+    }
 }
 
 dependencies {

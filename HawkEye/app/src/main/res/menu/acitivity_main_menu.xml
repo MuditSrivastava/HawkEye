@@ -6,13 +6,13 @@
     <item
         android:id="@+id/action_camera"
         android:orderInCategory="300"
-        android:title="click photo"
+        android:title="@string/click_menu"
         android:icon="@drawable/ic_add_a_photo_black_24dp"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_browse"
         android:orderInCategory="300"
-        android:title="browse photo"
+        android:title="@string/browse_menu"
         android:icon="@drawable/ic_create_new_folder_black_24dp"
         app:showAsAction="always" />
 </menu>
