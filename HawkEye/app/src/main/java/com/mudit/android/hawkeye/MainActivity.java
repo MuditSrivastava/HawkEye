@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -37,6 +38,7 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity implements AsyncResponse{
 
     private static final int CAMERA_REQUEST = 1888;
+    private static int RESULT_LOAD_IMAGE = 1;
     private ImageView imageView;
     private RecyclerView recyclerView;
     private ResultAdapter resultAdapter;
@@ -83,6 +85,34 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse{
             startAnim();
             FetchTask search = new FetchTask(finalFile,this);
             search.execute();
+        }
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            //String picturePath = cursor.getString(columnIndex);
+           // cursor.close();
+
+            //ImageView imageView = (ImageView) findViewById(R.id.imgView);
+            //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+           // File finalFile = new File(getPath(picturePath));
+            Uri tempUri = data.getData();
+
+            File finalFile = new File(getPath(tempUri));
+
+            Picasso.with(this)
+                    .load(finalFile)
+                    .placeholder(R.drawable.ph1)
+                    .into(imageView);
+            startAnim();
+            FetchTask search = new FetchTask(finalFile,this);
+            search.execute();
+
         }
     }
    /* public Uri getImageUri(Context inContext, Bitmap inImage) {
@@ -165,6 +195,14 @@ public class MainActivity extends AppCompatActivity implements AsyncResponse{
 
 
             }
+        if(item.getItemId()==R.id.action_browse){
+
+            Intent i = new Intent(
+                    Intent.ACTION_PICK,
+                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+            startActivityForResult(i, RESULT_LOAD_IMAGE);
+        }
 
         return super.onOptionsItemSelected(item);
     }
