@@ -18,7 +18,7 @@ Main features of app:
 
  
 ## Powered By
- [<img width="50%" src="https://2eof2j3oc7is20vt9q3g7tlo5xe-wpengine.netdna-ssl.com/wp-content/uploads/2017/02/IBM-Watson-image.png"/>](https://www.ibm.com/watson/)
+ [<img width="30%" src="https://2eof2j3oc7is20vt9q3g7tlo5xe-wpengine.netdna-ssl.com/wp-content/uploads/2017/02/IBM-Watson-image.png"/>](https://www.ibm.com/watson/)
  
 ## License
 
