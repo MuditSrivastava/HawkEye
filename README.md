@@ -13,6 +13,7 @@ Main features of app:
   
 ## Libraries Used
  [Ibm Watson Visual Recognition](https://www.ibm.com/watson/developercloud/visual-recognition.html)
+ 
  [Ibm Watson TTS](https://www.ibm.com/watson/developercloud/text-to-speech.html)
 
 
