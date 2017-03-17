@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.0"
     defaultConfig {
         applicationId "com.mudit.android.hawkeye"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -18,9 +18,9 @@ android {
         }
     }
     buildTypes.each{
-        it.buildConfigField 'String', 'VR_API_KEY',"VR_Key_Here"
-        it.buildConfigField 'String', 'TTS_Username',"TTS_Username_Here"
-        it.buildConfigField 'String', 'TTS_Password',"TTS_Key_Here"
+        it.buildConfigField 'String', 'VR_API_KEY',"\"53426030bf4dc91d8abcf378c2dbaf978b81d8c5\""
+        it.buildConfigField 'String', 'TTS_Username',"\"0010d4a5-aa14-4654-996a-822501522a54\""
+        it.buildConfigField 'String', 'TTS_Password',"\"COoHZim6cfZb\""
     }
 }
 
